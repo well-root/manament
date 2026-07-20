@@ -90,7 +90,7 @@
 
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>it-utils</artifactId>
+            <artifactId>itheima-utils</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <!-- JWT依赖-->

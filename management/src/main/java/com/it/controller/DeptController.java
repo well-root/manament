@@ -1,12 +1,11 @@
 package com.it.controller;
 
+import com.it.anno.LogOperation;
 import com.it.pojo.Dept;
 import com.it.pojo.Result;
 import com.it.service.DeptService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,6 +30,7 @@ public class DeptController {
     }
 
 //    删除操作
+    @LogOperation
     @DeleteMapping
     public Result delete(Integer id){
 //        System.out.println("根据id来删除部门="+id);
@@ -39,6 +39,7 @@ public class DeptController {
         return Result.success();
     }
 
+    @LogOperation
     @PostMapping
     public Result save(@RequestBody Dept dept) {
 //
@@ -57,7 +58,8 @@ public class DeptController {
         }
 
 //        修改部门
-        @PutMapping
+        @LogOperation
+    @PutMapping
     public Result update(@RequestBody Dept dept){
 //            System.out.println("修改部门,dept="+dept);
             log.info("修改部门, dept: {}" , dept);

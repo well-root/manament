@@ -1,6 +1,6 @@
-package com.it.service;
+package com.it.mapper;
 
-import com.itheima.pojo.OperateLog;
+import com.it.pojo.OperateLog;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 

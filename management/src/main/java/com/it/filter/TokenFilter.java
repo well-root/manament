@@ -1,6 +1,8 @@
 package com.it.filter;
 
+import com.it.utils.CurrentHolder;
 import com.it.utils.JwtUtils;
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -44,7 +46,10 @@ public class TokenFilter implements Filter {
 
         //5. 解析token，如果解析失败，返回错误结果（未登录）
         try {
-            JwtUtils.parseJWT(jwt);
+            Claims claims = JwtUtils.parseJWT(jwt);
+            Integer empId = Integer.valueOf(claims.get("id").toString());
+            CurrentHolder.setCurrentId(empId);
+            log.info("令牌合法, 放行, 当前登录员工ID: {}", empId);
         } catch (Exception e) {
             e.printStackTrace();
             log.info("解析令牌失败, 返回错误结果");
@@ -53,7 +58,9 @@ public class TokenFilter implements Filter {
         }
 
         //6. 放行
-        log.info("令牌合法, 放行");
         chain.doFilter(request, response);
+
+        //7. 清空 ThreadLocal，防止内存泄漏
+        CurrentHolder.remove();
     }
 }
