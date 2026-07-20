@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 降低 Spring 框架的日志噪音 -->
+    <logger name="org.springframework" level="warn" />
+    <logger name="org.springframework.boot" level="warn" />
+    <logger name="org.apache.catalina" level="warn" />
+    <logger name="org.apache.tomcat" level="warn" />
+    <logger name="org.mybatis" level="warn" />
+    <logger name="com.zaxxer.hikari" level="warn" />
+
+    <!-- 你自己的包保持 debug 级别，方便调试 -->
+    <logger name="com.it" level="debug" />
+
+    <!-- 根日志级别 -->
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
