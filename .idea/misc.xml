@@ -4,8 +4,9 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/management/pom.xml" />
-        <option value="$PROJECT_DIR$/itheima-utils/pom.xml" />
+        <option value="$PROJECT_DIR$/it-utils/pom.xml" />
       </list>
     </option>
   </component>
